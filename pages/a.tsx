@@ -25,7 +25,7 @@ const AccessLog: NextPage = ({c}:any) => {
 
 export async function getServerSideProps(context: any) {
 
-  var c
+  let c = ""
 
   fs.readFile('/var/log/nginx/access.log', function (error, content) {
     if (error) {
@@ -43,7 +43,7 @@ export async function getServerSideProps(context: any) {
     }
   });
   return {
-    props: {c}, // will be passed to the page component as props
+    props: {c:c}, // will be passed to the page component as props
   }
 }
 
