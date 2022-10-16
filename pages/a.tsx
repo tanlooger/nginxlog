@@ -35,7 +35,7 @@ export async function getServerSideProps(context: any) {
   c = file.toString().replace(regex, '"\n\n$1')
   
   return {
-    props: {c:c}, // will be passed to the page component as props
+    props: {c}, // will be passed to the page component as props
   }
 }
 
