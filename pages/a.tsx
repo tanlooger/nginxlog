@@ -19,8 +19,8 @@ export async function getServerSideProps(context: any) {
 
   const { readFileSync } = require("fs");
 
-    const file = readFileSync("/Volumes/SD/Projects/nginxlog/access.log", "utf8");
-    //const file = readFileSync("/var/log/nginx/access.log", "utf8");
+    //const file = readFileSync("/Volumes/SD/Projects/nginxlog/access.log", "utf8");
+    const file = readFileSync("/var/log/nginx/access.log", "utf8");
 
   let c = ""
   const regex = /"\s(\d{1,3}\.\d{1,3})/g;
