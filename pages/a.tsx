@@ -25,23 +25,15 @@ const AccessLog: NextPage = ({c}:any) => {
 
 export async function getServerSideProps(context: any) {
 
+  const { readFileSync } = require("fs");
+
+    //const file = readFileSync("/Volumes/SD/Projects/nginxlog/access.log", "utf8");
+    const file = readFileSync("/var/log/nginx/access.log", "utf8");
+
   let c = ""
-
-  fs.readFile('/var/log/nginx/access.log', function (error, content) {
-    if (error) {
-      if (error.code == 'ENOENT') {
-
-      }
-      else {
-
-      }
-    }
-    else {
-      //const regex = /" \d{1,3}\.\d{1,3}/i;
-      const regex = /"\s(\d{1,3}\.\d{1,3})/g;
-      c = content.toString().replace(regex, '"\n\n$1')
-    }
-  });
+  const regex = /"\s(\d{1,3}\.\d{1,3})/g;
+  c = file.toString().replace(regex, '"\n\n$1')
+  
   return {
     props: {c:c}, // will be passed to the page component as props
   }
